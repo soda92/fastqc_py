@@ -1,11 +1,4 @@
-# fastqc python wrapper
-
-## Note
-
-need to install java.
-
-## docs
-
+help_str = """
         FastQC - A high throughput sequence QC analysis tool
 
 SYNOPSIS
@@ -139,3 +132,4 @@ BUGS
 
     Any bugs in fastqc should be reported either to simon.andrews@babraham.ac.uk
     or in www.bioinformatics.babraham.ac.uk/bugzilla/
+"""

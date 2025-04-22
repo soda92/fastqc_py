@@ -44,8 +44,25 @@ def exec_real_time(command):
         print(f"Command exited with code: {process.returncode}", file=sys.stderr)
 
 
+def has_help(argv):
+    if "-h" in argv or "--help" in argv:
+        return True
+    if "/?" in argv:
+        return True
+    if "-?" in argv:
+        return True
+    if len(argv) == 0:
+        return True
+    return False
+
+
 def main():
     argv = sys.argv[1:]
+    if has_help(argv):
+        from fastqc_py.help_str import help_str
+
+        print(help_str)
+        exit(0)
     fastqc_path = Path(__file__).resolve().parent.parent.joinpath("fastqc_lib")
     fastqc_path_str = str(fastqc_path).replace("\\", "/")
     classpath = "!;!/sam-1.103.jar;!/jbzip2-0.9.jar".replace("!", fastqc_path_str)
