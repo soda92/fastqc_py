@@ -27,5 +27,10 @@ exclude = ["__pycache__", "*.pyc", "*.exe~", "*.syso"]
 
 [tool.hatch.build.hooks.custom]
 
+[dependency-groups]
+dev = [
+    "hatchling>=1.27.0",
+]
+
 [project.scripts]
 fastqc = "fastqc_py.main:main"
