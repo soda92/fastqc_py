@@ -2,7 +2,10 @@
 
 ## Note
 
-need to install java.
+JRE is now included; no need to install java!
+
+when build wheels, download jre-17 from [adoptium.net][1], and put it in `fastqc_jre\jdk-17.0.15+6-jre` folder.
+[1]: https://adoptium.net/temurin/releases/?version=17&os=windows&arch=x64&package=jre
 
 ## docs
 

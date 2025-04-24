@@ -1,6 +1,7 @@
 import subprocess
 import sys
 from pathlib import Path
+from sodatools import str_path
 
 import threading
 
@@ -64,11 +65,16 @@ def main():
         print(help_str)
         exit(0)
     fastqc_path = Path(__file__).resolve().parent.parent.joinpath("fastqc_lib")
-    fastqc_path_str = str(fastqc_path).replace("\\", "/")
+    fastqc_path_str = str_path(fastqc_path)
     classpath = "!;!/sam-1.103.jar;!/jbzip2-0.9.jar".replace("!", fastqc_path_str)
+
+    jre_path = (
+        Path(__file__).resolve().parent.parent.joinpath("fastqc_jre/jdk-17.0.15+6-jre/bin/java.exe")
+    )
+    jre_path_str = str_path(jre_path)
     # print(classpath)
     exec_real_time(
-        f"java -Xmx250m -classpath {classpath} uk.ac.babraham.FastQC.FastQCApplication "
+        f"{jre_path_str} -Xmx250m -classpath {classpath} uk.ac.babraham.FastQC.FastQCApplication "
         + " ".join(argv)
     )
 
